@@ -7,11 +7,11 @@ import jakarta.persistence.Id;
 import lombok.Data;
 
 @Data
-@Entity
+@Entity(name = "questionare")
 public class Question {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String category;
     private String question_title;
