@@ -7,9 +7,8 @@ import jakarta.persistence.Id;
 import lombok.Data;
 
 @Data
-@Entity(name = "questionare")
+@Entity(name = "question")
 public class Question {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

@@ -3,6 +3,8 @@ package com.example.questionare.controllers;
 import com.example.questionare.models.Question;
 import com.example.questionare.services.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,7 +16,7 @@ public class QuestionController {
     QuestionService questionService;
 
     @GetMapping("/allQuestions")
-    public List<Question> getAllQuestions(){
+    public ResponseEntity<List<Question>> getAllQuestions(){
         return questionService.getAllQuestions();
     }
 
@@ -39,7 +41,6 @@ public class QuestionController {
         existingq.setOption1(question.getOption1());
         existingq.setOption2(question.getOption2());
         existingq.setOption3(question.getOption3());
-
 
         //Save the updated question
         return questionService.updateQuestion(existingq);
