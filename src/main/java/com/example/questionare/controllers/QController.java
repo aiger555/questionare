@@ -2,6 +2,7 @@ package com.example.questionare.controllers;
 
 import com.example.questionare.models.Question;
 import com.example.questionare.models.QuestionWrapper;
+import com.example.questionare.models.Response;
 import com.example.questionare.services.QService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,5 +27,10 @@ public class QController {
     @GetMapping("get/{id}")
     public ResponseEntity<List<QuestionWrapper>> getQquestions(@PathVariable Integer id){
         return qService.getQquestions(id);
+    }
+
+    @PostMapping("submit/{id}")
+    public ResponseEntity<Integer> submitQ(@PathVariable Integer id, @RequestBody List<Response> responses){
+        return qService.calculateResult(id, responses);
     }
 }
