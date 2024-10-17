@@ -29,8 +29,4 @@ public class QController {
         return qService.getQquestions(id);
     }
 
-    @PostMapping("submit/{id}")
-    public ResponseEntity<Integer> submitQ(@PathVariable Integer id, @RequestBody List<Response> responses){
-        return qService.calculateResult(id, responses);
-    }
 }
