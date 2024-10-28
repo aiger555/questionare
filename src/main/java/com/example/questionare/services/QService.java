@@ -2,6 +2,7 @@ package com.example.questionare.services;
 
 import com.example.questionare.dao.QDao;
 import com.example.questionare.dao.QuestionDao;
+import com.example.questionare.dao.ResponseDao;
 import com.example.questionare.models.Q;
 import com.example.questionare.models.Question;
 import com.example.questionare.models.QuestionWrapper;
@@ -21,6 +22,8 @@ public class QService {
     QDao qDao;
     @Autowired
     QuestionDao questionDao;
+    @Autowired
+    ResponseDao responseDao;
 
 
     public ResponseEntity<String> createQ(String category, int numQ, String title) {
@@ -57,5 +60,11 @@ public class QService {
         return new ResponseEntity<>(questionsForUser, HttpStatus.OK);
     }
 
+    public ResponseEntity<String> save(List<Response> responses) {
+        for (Response response: responses) {
+            responseDao.save(response);
+        }
+        return new ResponseEntity<>("Response has been saved successfully", HttpStatus.CREATED);
+    }
 
 }
