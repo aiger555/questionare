@@ -10,7 +10,7 @@ import java.util.Objects;
 
 public interface ResponseDao extends JpaRepository<Response,Integer> {
 
-    @Query("select r.response, count(r) as count from Response r where r.question_id = :questionId group by r.response")
+    @Query("select r.response, count(r) as count from Response r where r.question.id = :questionId group by r.response")
     List<Object[]> findResponseStatisticsByQuestionId
             (@Param("questionId") int questionId);
 

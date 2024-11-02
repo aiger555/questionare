@@ -27,3 +27,16 @@ select * from question;
 select * from q;
 select * from q_questions;
 
+CREATE TABLE response (
+                          id SERIAL PRIMARY KEY,
+                          question_id INTEGER NOT NULL REFERENCES question(id),
+                          response TEXT NOT NULL
+);
+
+INSERT INTO response (question_id, response) VALUES
+                                                 (1, 'A framework'),
+                                                 (1, 'A framework'),
+                                                 (1, 'A programming language'),
+                                                 (2, '@SpringBootApplication'),
+                                                 (2, '@SpringBootApplication'),
+                                                 (2, '@EnableBoot');
