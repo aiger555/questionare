@@ -3,10 +3,7 @@ package com.example.questionare.services;
 import com.example.questionare.dao.QDao;
 import com.example.questionare.dao.QuestionDao;
 import com.example.questionare.dao.ResponseDao;
-import com.example.questionare.models.Q;
-import com.example.questionare.models.Question;
-import com.example.questionare.models.QuestionWrapper;
-import com.example.questionare.models.Response;
+import com.example.questionare.models.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -60,11 +57,25 @@ public class QService {
         return new ResponseEntity<>(questionsForUser, HttpStatus.OK);
     }
 
+
     public ResponseEntity<String> save(List<Response> responses) {
         for (Response response: responses) {
             responseDao.save(response);
         }
         return new ResponseEntity<>("Response has been saved successfully", HttpStatus.CREATED);
+    }
+
+
+    public ResponseEntity<List<ResponseStatistic>> getResponseStatistics(Integer questionId) {
+        List<Object[]> results = responseDao.findResponseStatisticsByQuestionId(questionId);
+        List<ResponseStatistic> statistics = new ArrayList<>();
+
+        for (Object[] result : results) {
+            String responseText = (String) result[0];
+            Long count = (Long) result[1];
+            statistics.add(new ResponseStatistic(responseText, count));
+        }
+        return new ResponseEntity<>(statistics, HttpStatus.OK);
     }
 
 }
