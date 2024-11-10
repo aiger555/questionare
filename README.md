@@ -4,5 +4,5 @@
 
 Nuralieva Aigerim COM22-B
 
-Presentation - https://drive.google.com/drive/folders/1J3PdmbjCNzRkIcDyw5ZlClAetw4lNedM?usp=drive_link
-
+Presentation - 
+https://drive.google.com/file/d/1mkz_TRwmHov5cnwyKqUpkyHBUVCcsNyO/view?usp=drivesdk
